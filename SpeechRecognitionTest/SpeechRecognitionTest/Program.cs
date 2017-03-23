@@ -16,9 +16,8 @@ namespace ConsoleApplication7
             // Create a new Speech Recognizer
             var recognizer = new SpeechRecognitionEngine(c);
             var recognizer2 = new SpeechRecognitionEngine(c);
-            recognizer.UpdateRecognizerSetting("CFGConfidenceRejectionThreshold", 30);
-            Console.WriteLine(recognizer.BabbleTimeout);
-            Console.WriteLine(recognizer.InitialSilenceTimeout);
+            //recognizer.UpdateRecognizerSetting("CFGConfidenceRejectionThreshold", 30);
+            
             recognizer.InitialSilenceTimeout = TimeSpan.FromMilliseconds(0);
             //recognizer.EndSilenceTimeout = TimeSpan.FromMilliseconds(0);
             //recognizer.EndSilenceTimeoutAmbiguous = TimeSpan.FromMilliseconds(0);

@@ -53,11 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="KeyPhrases.grml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="grammar.grxml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="2488415658_NYL_P410SM8R_149520478_101826_NYL_P410SM8R.wav" />
     <Content Include="speech.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

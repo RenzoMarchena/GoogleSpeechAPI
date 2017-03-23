@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<grammar version="1.0" xml:lang="en-US" mode="voice" root="ask2"
+ xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="ask2">
+    <one-of>
+      <item>MasterCard</item>
+      <item>VISA</item>
+      <item>Credit Card</item>
+      <item>Debit Card</item>
+      <item>Account</item>
+      <item>grab</item>
+      <item>Expiration Date</item>
+    </one-of>
+  </rule>
+
+</grammar>

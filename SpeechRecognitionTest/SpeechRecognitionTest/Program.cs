@@ -28,16 +28,17 @@ namespace ConsoleApplication7
             Console.WriteLine(recognizer.EndSilenceTimeoutAmbiguous.TotalSeconds);
             // Configure the input to the recognizer.
             //recognizer.SetInputToWaveFile(@"C:\Users\march\Source\Repos\renzomarchena\SpeechRecognitionTest\SpeechRecognitionTest\2488415658_NYL_P410SM8R_149520478_101826_NYL_P410SM8R.wav");
-            recognizer.SetInputToWaveFile(@"C:\Users\march\Downloads\10minutes.wav");
-            recognizer2.SetInputToWaveFile(@"C:\Users\march\Downloads\10minutes.wav");
+            recognizer.SetInputToWaveFile(@"2488415658_NYL_P410SM8R_149520478_101826_NYL_P410SM8R.wav");
+            recognizer2.SetInputToWaveFile(@"2488415658_NYL_P410SM8R_149520478_101826_NYL_P410SM8R.wav");
 
-            var srgsDocument = new SrgsDocument(@"C:\Users\march\Source\Repos\renzomarchena\SpeechRecognitionTest\SpeechRecognitionTest\grammar.grxml");
+            var srgsDocument = new SrgsDocument(@"grammar.grxml");
 
-            var srgsDocument2 = new SrgsDocument(@"C:\Users\march\Source\Repos\renzomarchena\SpeechRecognitionTest\SpeechRecognitionTest\KeyPhrases.grml");
+            var srgsDocument2 = new SrgsDocument(@"KeyPhrases.grml");
 
             // Create the Grammar instance.
 
             var g = new Grammar(srgsDocument);
+            g.Name = "numbers";
             var g2 = new Grammar(srgsDocument2);
             // Load the Grammar into the Speech Recognizer
        
@@ -80,25 +81,28 @@ namespace ConsoleApplication7
             if (e.Result == null) return;
             if (e.Result.Confidence >= 0.5)
             {
-                Console.WriteLine( + e.Result.Audio.AudioPosition.Hours + ":" +
+                if (e.Result.Grammar.Name == "numbers")
+                {
+                   
+                    Console.Write(e.Result.Audio.AudioPosition.Hours + ":" +
                                                     e.Result.Audio.AudioPosition.Minutes + ":" +
-                                                    e.Result.Audio.AudioPosition.Seconds + " " + e.Result.Text);
-                /*Console.WriteLine(+ e.Result.Audio.Duration);
-                Console.WriteLine(" Confidence: " + e.Result.Confidence);*/
+                                                    e.Result.Audio.AudioPosition.Seconds + " ");
+                    foreach (var word in e.Result.Words)
+                    {
+                        Console.Write(word.Text);
+                        Console.Write(" , ");
+                    }
+
+                    Console.WriteLine();
+
+                }
+                else
+                {
+                    Console.WriteLine(e.Result.Audio.AudioPosition.Hours + ":" +
+                                                        e.Result.Audio.AudioPosition.Minutes + ":" +
+                                                        e.Result.Audio.AudioPosition.Seconds + " " + e.Result.Text);
+                }
             }
-
-            /*foreach (var word in e.Result.Words)
-            {
-                
-                    Console.WriteLine(word.Text);
-                    Console.WriteLine(word.AudioPosition.Hours + ":" + word.AudioPosition.Minutes + ":" + word.AudioPosition.Seconds);
-
-                    Console.WriteLine("Confidence: " + word.Confidence);
-
-                
-            }
-            */
-           
         }
 
 
